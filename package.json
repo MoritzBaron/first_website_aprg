@@ -1,0 +1,22 @@
+{
+  "name": "aprg_projekt",
+  "version": "1.0.0",
+  "description": "Kalender/Teamplaner",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hubertkiedrowski/aprg_projekt.git"
+  },
+  "author": "Moritz Baron, Mark Anthony Wiredu, Jonathan Magdanz, Hubert Kiedrowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hubertkiedrowski/aprg_projekt/issues"
+  },
+  "homepage": "https://github.com/hubertkiedrowski/aprg_projekt#readme",
+  "dependencies": {
+    "better-sqlite3": "^7.6.2"
+  }
+}
