@@ -8,6 +8,10 @@ app.set("view engine", "ejs");
 const DATABASE ="login.db";
 const db =require("better-sqlite3")(DATABASE);
 
+// init express fileupload
+const fileUpload = require('express-fileupload');
+app.use(fileUpload());
+
 //server starten
 app.listen(4242, function(){
     console.log("http://localhost:4242/anmeldedaten");
