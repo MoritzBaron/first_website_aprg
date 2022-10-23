@@ -11,6 +11,9 @@ const db =require("better-sqlite3")(DATABASE);
 // init express fileupload
 const fileUpload = require('express-fileupload');
 app.use(fileUpload());
+//cookies-parser init
+app.use(cookiePraser());
+
 
 //server starten
 app.listen(4242, function(){
