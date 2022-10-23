@@ -19,6 +19,6 @@ app.listen(4242, function(){
 });
 
 app.get("/startseite",function(req,res){
-        res.sendFile(__dirname + "/public/startseite.html")
+        res.sendFile(__dirname + "/startseite.html")
         
 });
