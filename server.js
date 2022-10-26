@@ -4,7 +4,8 @@ app.use(express.urlencoded({extended:true}))
 
 app.engine("ejs", require("ejs").__express);
 app.set("view engine", "ejs");
-
+//
+app.use(express.static('public'));
 // init express fileupload
 const fileUpload = require('express-fileupload');
 app.use(fileUpload());
