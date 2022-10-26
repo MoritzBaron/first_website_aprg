@@ -14,8 +14,8 @@ app.use(cookieParser());
 
 
 //server starten
-app.listen(4242, function(){
-    console.log("http://localhost:4242/startseite");
+app.listen(3000, function(){
+    console.log("http://localhost:3000/startseite");
 });
 
 app.get("/startseite",function(req,res){
