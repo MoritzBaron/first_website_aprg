@@ -23,3 +23,7 @@ app.get("/startseite",function(req,res){
     res.sendFile(__dirname + "/views/startseite.html")
         
 });
+
+app.get("/features", function(req,res){
+    res.sendFile(__dirname + "/views/features.html")
+})
