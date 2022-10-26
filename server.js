@@ -19,6 +19,6 @@ app.listen(3000, function(){
 });
 
 app.get("/startseite",function(req,res){
-        res.sendFile(__dirname + "/startseite.html")
+        res.sendFile(__dirname + "/views/startseite.html")
         
 });
