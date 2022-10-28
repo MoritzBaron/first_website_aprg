@@ -24,15 +24,15 @@ app.listen(3000, function(){
 
 app.get("/startseite",function(req,res){
     res.sendFile(__dirname + "/views/startseite.html"); 
-        
 });
 
 app.get("/features",function(req,res){
     res.sendFile(__dirname + "/views/features.html");
-        
 });
 
 app.get("/aboutUs",function(req,res){
     res.sendFile(__dirname + "/views/aboutUs.html");
-        
+});
+app.get("/login",function(req,res){
+    res.sendFile(__dirname + "/views/loginformular.html")
 });
