@@ -72,12 +72,14 @@
             </nav>
             <a class="cta" href="#"><button>registrierung</button></a>
             </header><center>
-            <form class="login">
-                <input type="text" placeholder="Username">
-                <input type="password" placeholder="Password">
-                <button>Login</button>
-              </form>
-              
+                <form action="/login" method="POST">
+                    Benutzername<br>
+                    <input type="text" name="benutzername"><br>
+                    Passwort<br>
+                    <input type="password" name="passwort"><br>
+                    <button type="submit">Login</button>
+            
+                </form>
               <a href="" target="_blank">Forgot your Password?</a>
             </center> </body>
 </html>
