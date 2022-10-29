@@ -41,9 +41,9 @@ app.get("/features",function(req,res){
 app.get("/aboutUs",function(req,res){
     res.sendFile(__dirname + "/views/aboutUs.html");
 });
-app.get("/login",function(req,res){
+/*app.get("/login",function(req,res){
     res.sendFile(__dirname + "/views/loginformular.html")
-});
+});*/
 app.get("/login",function(req,res){
     res.render("login")
 });
