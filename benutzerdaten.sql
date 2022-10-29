@@ -8,3 +8,4 @@ CREATE TABLE benutzer(
 );
 
 /* Probe Datensätze*/
+INSERT INTO benutzer(benutzername,passwort) VALUES ("JJ","123");
