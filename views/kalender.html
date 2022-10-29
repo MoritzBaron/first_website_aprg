@@ -12,6 +12,7 @@
 
         <main>
             <header class="header">
+
                 <div class="weekControls">
                     <i id="prevWeekBtn" class="fa-solid fa-angles-left"></i>
                     <span id="weekDisplay">
@@ -21,16 +22,20 @@
                     </span>
                     <i id="nextWeekBtn" class="fa-solid fa-angles-right"></i>
                 </div>
+
                 <h1>Kalender</h1>
+                
                 <div class="generalControls">
                     <i class="fas fa-plus"></i>
                     <i class="fas fa-trash-alt"></i>
-                    <i></i>
                 </div>
+
             </header>
             <section id="kalender">
                 <div class="switchable"></div>
-                <div class="time"></div>
+                <div class="time">
+                    <div></div>
+                </div>
                 <div data-name="Montag" data-dayInex="0" class="day"></div>
                 <div data-name="Dienstag" data-dayInex="1" class="day"></div>
                 <div data-name="Mittwoch" data-dayInex="2" class="day"></div>
@@ -41,8 +46,8 @@
             </section>
         </main>
 
-        <script src="https://cdnjscloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="server.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+        <script src="/mainKal.js" type="module"></script>
 
 
     </body>
