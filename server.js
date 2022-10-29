@@ -6,6 +6,10 @@ app.use(express.urlencoded({extended:true}))
 //Ejs initialisiern
 app.engine("ejs", require("ejs").__express);
 app.set("view engine", "ejs");
+//freigabe der ordner
+app.use(express.static(__dirname +'public'));
+app.use(express.static(__dirname +'views'));
+app.use(express.static(__dirname +'pictures'));
 
 //initialisierung Datenbank
 const DATABASE = "benutzer.db";
@@ -27,8 +31,18 @@ app.listen(3000, function(){
 
 //get Requests
 app.get("/startseite",function(req,res){
-    res.sendFile(__dirname + "/views/startseite.html")
-        
+    res.sendFile(__dirname + "/views/startseite.html"); 
+});
+
+app.get("/features",function(req,res){
+    res.sendFile(__dirname + "/views/features.html");
+});
+
+app.get("/aboutUs",function(req,res){
+    res.sendFile(__dirname + "/views/aboutUs.html");
+});
+app.get("/login",function(req,res){
+    res.sendFile(__dirname + "/views/loginformular.html")
 });
 app.get("/login",function(req,res){
     res.render("login")
