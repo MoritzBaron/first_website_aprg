@@ -1,76 +1,26 @@
-<Y!-- ich hab schonmal mit dem code für die navigationsleiste angefangen: 
-https://www.youtube.com/watch?v=PwWHL3RyQgk der css part wird aber noch nicht richtig erkannt -->
+<!--  ich hab schonmal mit dem code für die navigationsleiste angefangen:
+https://www.youtube.com/watch?v=PwWHL3RyQgk der css part wird aber noch nicht
+richtig erkannt -->
 <!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>navbar</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    background-color: rgb(38, 38, 38);
-}
-li, a, button {
-    font-family:"Montserrat", sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-}
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 10%;
-}
-
-.logo {
-    cursor: pointer;
-}
-.nav__links{
-    list-style: none;
-}
-.nav__links li {
-    display:inline-block;
-    padding: 0% 20px;
-}
-.nav__links li a {
-    transition: all 0.3s ease 0s;
-}
-.nav__links li a :hover {
-    color:aqua;
-}
-button {
-    padding: 9px 25px;
-    background-color: rgb(128, 202, 178);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-
-}
-button:hover {
-    background-color: rgb(23, 185, 131);
-
-}
-
-</style>
-    </head>
-        <body> 
-            <header>
-            <img scr="public\logo_aprg.png" alt="logo">
-            <nav>
-                <ul class="nav__links">
-                    <li><a href="/features">Features</a></li>
-                    <li>seitenabh. var.</li>
-                    <li><a href="/aboutUs">About Us</a></li>
-                </ul>
-            </nav>
-            <a class="cta" href="login"><button>login</button></a>
-            </header>
-        </body>
-    <html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>navbar</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body>
+    <header>
+        <img class="logo" src="/logo_aprg.png" alt="logo" />
+        <nav>
+            <ul class="nav__links">
+                <li><a href="/features">Features</a></li>
+                <li>seitenabh. var.</li>
+                <li><a href="/aboutUs">About Us</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="login"><button>login</button></a>
+    </header>
+</body>
+<html></html>

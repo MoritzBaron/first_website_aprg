@@ -8,10 +8,11 @@ app.use(express.urlencoded({extended:true}));
 //Ejs initialisiern
 app.engine("ejs", require("ejs").__express);
 app.set("view engine", "ejs");
+
 //freigabe der ordner
-app.use(express.static(__dirname +'public'));
-app.use(express.static(__dirname +'views'));
-app.use(express.static(__dirname +'pictures'));
+app.use(express.static(__dirname +'/views'));
+app.use(express.static(__dirname +'/pictures'));
+app.use(express.static(__dirname +'/public'));
 
 //initialisierung Datenbank
 const DATABASE = "benutzer.db";
