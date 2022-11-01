@@ -1,29 +1,30 @@
 /*Allgemein*/
-:root{
+:root {
     --grid-color: #cecece;
     --time-color: #777;
     --slot-hover-color: #eee;
-    --shadow-color: rgba(0,0,0,0.3);
+    --shadow-color: rgba(0, 0, 0, 0.3);
     --font-color: #222;
-    --color-red: rgb(190,35,15);
-    --color-blue: rgb(54,92,175);
-    --color-green: rgb(21,129,21);
-    --color-orange: rgb(233,153,4);
+    --color-red: rgb(190, 35, 15);
+    --color-blue: rgb(54, 92, 175);
+    --color-green: rgb(21, 129, 21);
+    --color-orange: rgb(233, 153, 4);
     --slotHeight: 30px;
 }
 
-*{
+* {
     box-sizing: border-box;
     margin: 0;
-    padding:0;
+    padding: 0;
 }
 
 body {
-    font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: var(--font-color);
 }
 
-input, textarea{
+input,
+textarea {
     font-family: inherit;
     font-size: inherit;
     outline: none;
@@ -31,7 +32,7 @@ input, textarea{
 }
 
 /*Header*/
-.header{
+.header {
     text-align: center;
     padding: 20px, 10px;
     position: relative;
@@ -40,99 +41,92 @@ input, textarea{
     justify-content: center;
 }
 
-.header h1{
+.header h1 {
     color: var(--color-blue);
     font-weight: 400;
     padding-bottom: 20px;
 }
 
-.header i{
+.header i {
     cursor: pointer;
     margin: 0px 5px;
     color: var(--time-color);
     transition: all 80ms linear;
 }
 
-.header i:hover{
+.header i:hover {
     color: var(--font-color);
     border-color: var(--font-color);
 }
 
 /*Controls*/
-.weekControls{
+.weekControls {
     position: absolute;
     left: 20px;
     font-size: 22px;
 }
 
-.generalControls{
+.generalControls {
     position: absolute;
     right: 20px;
 }
 
-.generalControls{
+.generalControls {
     line-height: 25px;
     display: inline-block;
     width: 30px;
     height: 30px;
-    
-    
 }
 
-.generalControls .fa-plus{
+.generalControls .fa-plus {
     font-size: 20px;
 }
 
-.generalControls .fa-trash{
+.generalControls .fa-trash {
     font-size: 18px;
 }
 
 /*Kalender*/
-#kalender{
-    display:flex;
+#kalender {
+    display: flex;
     width: 100%;
     transition: opacity 200ms ease-in;
     border-bottom: 1px solid var(--grid-color);
 }
 
-#kalender.opaque{
+#kalender.opaque {
     opacity: 0.4;
 }
 
 /*SPalten*/
 
-.time{
+.time {
     width: 100%;
     min-width: 100px;
     max-width: 100px;
-    text-align:center;
+    text-align: center;
     color: var(--time-color);
 }
 
-.day{
+.day {
     width: 100%;
     min-width: 110px;
-    border-left:1px solid var(--grid-color);
+    border-left: 1px solid var(--grid-color);
 }
 
-.columnHeader{
+.columnHeader {
     text-align: center;
     font-size: 20px;
     padding: 10px 0px;
-    height:60px;
+    height: 60px;
     overflow: hidden;
 }
 
-.day .columnHeader{
+.day .columnHeader {
     border-top: 1px solid var(--grid-color);
 }
 
 /*slots*/
-.slots{
+.slots {
     position: relative;
 }
-
-
-
-
-
