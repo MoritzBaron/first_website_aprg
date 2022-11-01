@@ -1,7 +1,9 @@
 //Express initialisieren
 const express= require("express");
 const app = express();
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({extended:true}));
+
+
 
 //Ejs initialisiern
 app.engine("ejs", require("ejs").__express);
@@ -21,6 +23,18 @@ app.use(fileUpload());
 //cookies-parser init
 const cookieParser = require("cookie-parser")
 app.use(cookieParser());
+
+//function import
+function anmeldung(benutzername, passwort){
+    const benutzer = db.prepare("SELECT * FROM benutzer").all();
+    for (daten of benutzer){
+        if(daten.benutzername == benutzername && daten.passwort == passwort ){
+            return true;
+        }
+
+    }
+    return false; 
+};
 
 
 //server starten
@@ -53,3 +67,12 @@ app.post("/login", function(req,res){
 
 });
 
+// Anmeldung
+app.post("/startseite", function(req, res){
+    const benutzername = req.body.benutzername;
+    const passwort = req.body.passwort;
+
+    if (anmeldung(benutzername, passwort)){
+        res.redirect("/startseite");
+    }
+});
