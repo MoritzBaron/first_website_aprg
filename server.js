@@ -25,7 +25,7 @@ app.use(fileUpload());
 const cookieParser = require("cookie-parser")
 app.use(cookieParser());
 
-//function import
+//functions
 function anmeldung(benutzername, passwort){
     const benutzer = db.prepare("SELECT * FROM benutzer").all();
     for (daten of benutzer){
@@ -36,6 +36,7 @@ function anmeldung(benutzername, passwort){
     }
     return false; 
 };
+
 
 
 //server starten
@@ -63,10 +64,26 @@ app.get("/login",function(req,res){
     res.render("login")
 });
 
+app.get("/registrierung", function(req,res){
+    res.render("registrierung")
+});
+
 //Post Requests
 app.post("/login", function(req,res){
-
 });
+
+app.post("/registrierung", function(req,res){
+});
+
+app.post("/neuerBenutzer", function(req, res){
+    const param_name = req.body.name;
+    const param_email = req.body.email;
+    const param_passwort = req.body.passwort
+
+    const info =db.prepare("INSERT INTO benutzer (email, benutzername, passwort) VALUES(?,?,?)").run(param_email, param_name, param_passwort);
+    console.log(info);
+    res.redirect("/login");
+})
 
 // Anmeldung
 app.post("/startseite", function(req, res){
