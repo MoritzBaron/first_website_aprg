@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <link rel="stylesheet" href="/styles/main.css">
-
-    <title></title>
-</head>
-
-<body>
+    <head>
+        <meta charset="utf-8" />
+        <title>Login Form</title>
+        <link rel="stylesheet" href="/styles/main.css" />
+        <link rel="stylesheet" href="/styles/stylelogin.css" />
+    </head>
     <header>
-        <img class="logo" src="logo_aprg.png" alt="logo">
+        <img class="logo" src="logo_aprg.png" alt="logo" />
         <nav>
             <ul class="nav__links">
                 <li><a href="/features">Features</a></li>
@@ -17,19 +15,28 @@
                 <li><a href="/aboutUs">About Us</a></li>
             </ul>
         </nav>
-        <a class="cta" href="registrierung"><button>registrierung</button></a>
+        <a class="cta" href="/registrierung"><button>registrierung</button></a>
     </header>
-    <center>
-        <div class="flex-container" style="color:#f1f1f1">
-            <form action="/startseite" method="POST">
-                <a>Benutzername</a>
-                <br>
-                <input type="text" name="benutzername"><br>
-                <a>Passwort</a><br>
-                <input type="password" name="passwort"><br>
-                <button type="submit">Login</button>
-                <a href="#" target="_blank">Forgot your Password?</a>
+    <body>
+        <div class="center">
+            <h1>Login</h1>
+            <form action="/startseite" method="post">
+                <div class="txt_field">
+                    <input type="text" name="benutzername" required />
+                    <span></span>
+                    <label>Username</label>
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="passwort" required />
+                    <span></span>
+                    <label>Password</label>
+                </div>
+                <div class="pass">Forgot Password?</div>
+                <input type="submit" value="Login" />
+                <div class="signup_link">
+                    Not a member? <a href="/registrierung">Signup</a>
+                </div>
             </form>
-        </div></center>
-</body>
+        </div>
+    </body>
 </html>

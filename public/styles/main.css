@@ -18,7 +18,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 10%;
+    padding: 15px 10%;
 }
 
 .logo {
@@ -40,12 +40,12 @@ header {
 }
 button {
     padding: 9px 25px;
-    background-color: rgb(128, 202, 178);
+    background-color: #2691d9;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
 button:hover {
-    background-color: rgb(23, 185, 131);
+    background-color: #6cb9ec;
 }
