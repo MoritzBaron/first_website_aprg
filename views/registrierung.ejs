@@ -3,32 +3,47 @@
     <head>
         <title>Registrierung</title>
         <link rel="stylesheet" href="/styles/main.css" />
+        <link rel="stylesheet" href="/styles/stylelogin.css" />
 
     </head>
+    <header>
+        <img class="logo" src="/logo_aprg.png" alt="logo" />
+        <nav>
+            <ul class="nav__links">
+                <li><a href="/features">Features</a></li>
+                <li>seitenabh. var.</li>
+                <li><a href="/aboutUs">About Us</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="/login"><button>login</button></a>
+    </header>
     <body>
-        <header>
-            <img class="logo" src="/logo_aprg.png" alt="logo" />
-            <nav>
-                <ul class="nav__links">
-                    <li><a href="/features">Features</a></li>
-                    <li>seitenabh. var.</li>
-                    <li><a href="/aboutUs">About Us</a></li>
-                </ul>
-            </nav>
-            <a class="cta" href="/login"><button>login</button></a>
-        </header>
-        
-           <center> <div class="flex-container" style="color:#f1f1f1">
-        <form action="/neuerBenutzer" method="POST">
-            <a>Benutzername</a><br>
-            <input type="text" name="name" /><br />
-            <a>E-Mail</a><br>
-            <input type="e-mail" name="email" /><br />
-            <a>Passwort</a><br>
-            <input type="password" name="passwort" /><br />
-            <button type="submit">Registrieren</button><br />
-        </div>
-            <a href="login">Schon registriert? Hier einloggen</a>
-        </form></center>
-    </body>
+        <div class="center">
+            <h1>Registrierung</h1>
+        <form action="/neuerBenutzer" method="post">
+            <div class="txt_field">
+                <input type="text" name="benutzername" required />
+                <span></span>
+                <label>Username</label>
+            </div>
+            <div class="txt_field">
+                <input type="text" name="Email" required />
+                <span></span>
+                <label>Email</label>
+            </div>
+            <div class="txt_field">
+                <span></span>
+                <label>Password</label>
+                <input type="password" name="passwort" /><br />
+            </div>
+            <div class="pass">Forgot Password?</div>
+                <input type="submit" value="Register" />
+                <div class="signup_link">
+                    Already a member? <a href="#">Signup</a>
+                </div>
+            
+        </form>
+            <!-- <input type="password" name="passwort" /><br />
+            <button type="submit">Registrieren</button><br /> -->
+         </body>
 </html>
