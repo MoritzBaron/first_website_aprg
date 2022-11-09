@@ -60,7 +60,7 @@ app.get("/features", function (req, res) {
 });
 
 app.get("/aboutUs", function (req, res) {
-    res.sendFile(__dirname + "/views/aboutUs.html");
+    res.sendFile(__dirname + "/views/aboutus2.html");
 });
 
 app.get("/login", function (req, res) {
