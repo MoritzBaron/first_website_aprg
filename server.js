@@ -3,6 +3,17 @@ const express = require("express");
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 
+//Express-Session initialisieren
+const session = require('express-session')
+app.use(session({
+    secret: 'example',
+    saveUninitialized: false,
+    resave: false
+}));
+
+//bcrypt initialisieren
+const bcrypt = require('bcrypt');
+
 //Ejs initialisiern
 app.engine("ejs", require("ejs").__express);
 app.set("view engine", "ejs");
@@ -24,7 +35,7 @@ app.use(fileUpload());
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
-//functions
+/*functions
 function anmeldung(benutzername, passwort) {
     const benutzer = db.prepare("SELECT * FROM benutzer").all();
     for (daten of benutzer) {
@@ -33,7 +44,7 @@ function anmeldung(benutzername, passwort) {
         }
     }
     return false;
-}
+}*/
 
 //server starten
 app.listen(3000, function () {
@@ -52,9 +63,7 @@ app.get("/features", function (req, res) {
 app.get("/aboutUs", function (req, res) {
     res.sendFile(__dirname + "/views/aboutUs.html");
 });
-/*app.get("/login",function(req,res){
-    res.sendFile(__dirname + "/views/loginformular.html")
-});*/
+
 app.get("/login", function (req, res) {
     res.render("login");
 });
@@ -69,26 +78,47 @@ app.post("/login", function (req, res) {});
 app.post("/registrierung", function (req, res) {});
 
 app.post("/neuerBenutzer", function (req, res) {
-    const param_name = req.body.name;
+    //Eingaben aus dem registrierung.ejs Formular
+    const param_name = req.body.benutzername;
     const param_email = req.body.email;
     const param_passwort = req.body.passwort;
-
-    const info = db
-        .prepare(
-            "INSERT INTO benutzer (email, benutzername, passwort) VALUES(?,?,?)"
-        )
-        .run(param_email, param_name, param_passwort);
-    console.log(info);
-    res.redirect("/login");
+    // überprüfen ob Benutzer schon existiert
+    rows = db.prepare("SELECT * FROM benutzer WHERE benutzername = ?").all(param_name);
+    //Passwort verschlüsseln
+    if (rows.length == 0){
+        const hash = bcrypt.hashSync(param_passwort, 10);
+        const info = db.prepare("INSERT INTO benutzer(email, benutzername, passwort) VALUES(?,?,?)").run(param_email, param_name, hash);
+        console.log(info);
+        
+        res.redirect("login");
+    }
+    else{
+        res.render('registrierung');
+    }
+    
+    
 });
 
 // Anmeldung
 app.post("/startseite", function (req, res) {
     const benutzername = req.body.benutzername;
     const passwort = req.body.passwort;
-
-    if (anmeldung(benutzername, passwort)) {
-        res.redirect("/startseite");
+    const rows = db.prepare("SELECT passwort FROM benutzer WHERE benutzername=?").all(benutzername);
+    if(rows && rows.length == 1){
+        const hash = rows[0].passwort;
+        const isValid = bcrypt.compareSync(passwort, hash);
+        if(isValid == true){
+            req.session.authenticated = true;
+            req.session.user = benutzername;
+            res.redirect("startseite")
+        }
+        else {
+            res.redirect("login")
+        }
+        
+        }
+        else {
+            res.redirect("login")
     }
 });
 
