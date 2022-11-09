@@ -94,5 +94,5 @@ app.post("/startseite", function (req, res) {
 
 
 app.get("/kalender", function (req, res) {
-    res.sendFile(__dirname + "/kalenderMo/kalenderMo.html");
+    res.sendFile(__dirname + "/views/kalenderMo.html");
 });
