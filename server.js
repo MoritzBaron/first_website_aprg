@@ -11,6 +11,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/views"));
 app.use(express.static(__dirname + "/pictures"));
 app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/kalenderMo"));
 
 //initialisierung Datenbank
 const DATABASE = "benutzer.db";
@@ -93,5 +94,5 @@ app.post("/startseite", function (req, res) {
 
 
 app.get("/kalender", function (req, res) {
-    res.sendFile(__dirname + "/views/kalendarmark.html");
+    res.sendFile(__dirname + "/kalenderMo/kalenderMo.html");
 });
