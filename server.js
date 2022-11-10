@@ -61,7 +61,7 @@ app.get("/features", function (req, res) {
 });
 
 app.get("/aboutUs", function (req, res) {
-    res.sendFile(__dirname + "/views/aboutus2.html");
+    res.sendFile(__dirname + "/views/aboutus.html");
 });
 
 app.get("/login", function (req, res) {
