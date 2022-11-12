@@ -21,7 +21,7 @@
 body {
     font-family: "Segoe UI", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: var(--font-color);
-    background-color: rgb(41, 29, 29);
+    
 }
 
 input,
@@ -127,7 +127,166 @@ textarea {
     border-top: 1px solid var(--grid-color);
 }
 
+.day{
+    font-size: 15px;
+    color: var(--time-color);
+}
+
+.day.currentDay .columnHeader{
+    background-color: var(--slot-hover-color);
+}
+
 /*slots*/
 .slots {
     position: relative;
+}
+
+.slot, .time{
+    border-top: 1px solid var(--grid-color);
+    height: var(--slotHeight);
+}
+
+.time{
+    font-size: 14 px;
+}
+
+.time.currentTime {
+    background-color: var(--slot-hover-color);
+    color: var(--font-color);
+}
+
+.slot:hover{
+    cursor: pointer;
+    background-color: var(--slot-hover-color);
+}
+
+/*eventModal*/
+
+#eventModal{
+    display: none;
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px var(--shadow-color);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    padding: 20px;
+    width: 450px;
+    min-width: 250px;
+}
+
+#errors{
+    color: var(--color-red);
+}
+
+#modalTitle{
+    margin-bottom: 20px;
+}
+
+.descriptor {
+    font-weight: bold;
+    display: inline-block;
+    margin: 20px 10px 5px 0px;
+}
+
+.shortInput{
+    border-bottom: 1px solid var(--grid-color);
+    padding: 2px 1px;
+}
+
+.shortInput:focus{
+    border-bottom: 1px solid var(--font-color);
+}
+
+#eventTitle{
+    width: 95%;
+}
+
+#eventStart{
+    margin-right: 10px;
+}
+
+#eventEnd{
+    margin-left: 10px;
+}
+
+#eventDescription{
+    border: 1px solid var(--grid-color);
+    width: 95%;
+    height: 170px;
+    resize: vertical;
+    min-height: 40px;
+    padding: 4px;
+}
+
+#eventDescription:focus{
+    border: 1px solid var(--font-color);
+}
+
+#eventControls{
+    margin: 25px 0px 10px 0px;
+}
+
+.button{
+    padding: 10px 20px;
+    background-color: var(--color-blue);
+    color: white;
+    cursor: pointer;
+    margin-right: 12px;
+}
+
+.button:hover,
+.button:focus{
+    opacity: 0.6;
+}
+
+#deleteButton{
+    background-color: var(--color-red);
+}
+
+/*Colors*/
+
+#colors{
+    width: 150px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.color{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-sizing: content-box;
+    cursor: pointer;
+}
+
+.color.active, .color:focus, .color:hover{
+    border: 5px solid var(--grid-color);
+}
+
+.color-red{
+    background-color: var(--color-red);
+}
+
+.color-blue{
+    background-color: var(--color-blue);
+}
+
+.color-green{
+    background-color: var(--color-green);
+}
+
+.color-orange{
+    background-color: var(--color-orange);
+}
+
+@media (max-width: 800px){
+    #weekDisplay{
+        display: none;
+    }
 }
