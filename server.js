@@ -53,15 +53,15 @@ app.listen(3000, function () {
 
 //get Requests
 app.get("/startseite", function (req, res) {
-    res.sendFile(__dirname + "/views/startseite.html");
+    res.render("startseite");
 });
 
 app.get("/features", function (req, res) {
-    res.sendFile(__dirname + "/views/features.html");
+    res.sendFile(__dirname + "/views/startseite.html");
 });
 
-app.get("/aboutUs", function (req, res) {
-    res.sendFile(__dirname + "/views/aboutus.html");
+app.get("/contactus", function (req, res) {
+    res.sendFile(__dirname + "/views/contactus.html");
 });
 
 app.get("/login", function (req, res) {
@@ -110,7 +110,8 @@ app.post("/startseite", function (req, res) {
         if(isValid == true){
             req.session.authenticated = true;
             req.session.user = benutzername;
-            res.redirect("startseite")
+            res.redirect("startseite");
+            console.log(req.session.user);
         }
         else {
             res.redirect("login")
