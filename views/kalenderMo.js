@@ -14,7 +14,7 @@ export class Kalender{
         this.weekEnd = null;
         this.weekOffSet = 0;
         this.mode = MODE.VIEW;
-        this.events = [];
+        this.events = {};
     }
     setup(){
         this.setupTimes();
@@ -92,11 +92,11 @@ export class Kalender{
         $(`.color[data-color=${event.color}`).addClass("active");
         if(this.mode == MODE.UPDATE){
             $("#submitButton").val("update");
-            $("#deleteButton").show().click(() => {
+            $("#deleteButton").show().off("click").click(() => {
                 //ToDo
                 console.log("delete event", event)
             });
-            $("#copyButton").show().click(() => {
+            $("#copyButton").show().off("click").click(() => {
                 //ToDo
                 console.log("copy Event", event)
             });
@@ -108,10 +108,11 @@ export class Kalender{
         $("#eventModal").fadeIn(200);
         $("#eventTitle").focus();
         $("#kalender").addClass("opaque");
-        $("#eventModal").submit((e) => {
-            e.preventDefault();
-            this.submitModal(event);
-            console.log("submit event", event)
+        $("#eventModal")
+            .off("submit")
+            .submit((e) => {
+                e.preventDefault();
+                this.submitModal(event);
         })
     }
 
