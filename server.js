@@ -57,11 +57,11 @@ app.get("/startseite", function (req, res) {
 });
 
 app.get("/features", function (req, res) {
-    res.sendFile(__dirname + "/views/features.html");
+    res.sendFile(__dirname + "/views/startseite.html");
 });
 
-app.get("/aboutUs", function (req, res) {
-    res.sendFile(__dirname + "/views/aboutus.html");
+app.get("/contactus", function (req, res) {
+    res.sendFile(__dirname + "/views/contactus.html");
 });
 
 app.get("/login", function (req, res) {
