@@ -22,6 +22,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/views"));
 app.use(express.static(__dirname + "/pictures"));
 app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/kalenderMo"));
 
 //initialisierung Datenbank
 const DATABASE = "benutzer.db";
@@ -56,11 +57,11 @@ app.get("/startseite", function (req, res) {
 });
 
 app.get("/features", function (req, res) {
-    res.sendFile(__dirname + "/views/features.html");
+    res.sendFile(__dirname + "/views/startseite.html");
 });
 
-app.get("/aboutUs", function (req, res) {
-    res.sendFile(__dirname + "/views/aboutUs.html");
+app.get("/contactus", function (req, res) {
+    res.sendFile(__dirname + "/views/contactus.html");
 });
 
 app.get("/login", function (req, res) {
@@ -124,5 +125,5 @@ app.post("/startseite", function (req, res) {
 
 
 app.get("/kalender", function (req, res) {
-    res.sendFile(__dirname + "/views/kalendarmark.html");
+    res.sendFile(__dirname + "/views/kalenderMo.html");
 });

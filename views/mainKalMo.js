@@ -1,6 +1,10 @@
 //Kalender
-import {Kalender} from "./kalenderMo";
+import {Kalender} from "./kalenderMo.js";
 
 $(()=> {
     new Kalender().setup();
+
 })
+
+
+

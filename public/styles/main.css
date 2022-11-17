@@ -3,14 +3,18 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: rgb(38, 38, 38);
+    
+    
 }
 body{
 margin: 0;
   padding: 0;
   background: linear-gradient(120deg,#2980b9, #8e44ad);
-  height: 120vh;
-  overflow: hidden;}
+  height: 270vh;
+  overflow: auto;}
+header{
+    background-color: rgb(38, 38, 38);
+}
 li,
 a,
 button {
