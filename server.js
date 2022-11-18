@@ -52,9 +52,17 @@ app.listen(3000, function () {
 });
 
 //get Requests
-app.get("/startseite", function (req, res) {
-    res.render("startseite");
+
+app.get("/startseite", function(req,res){
+    if(angemeldet){
+    res.render("startseite",{"message": "Guten Tag"});   
+    }
+    else{
+        res.render("startseite", {"message": "Guten Tag " + req.session.user});
+    }
+    
 });
+
 
 app.get("/features", function (req, res) {
     res.sendFile(__dirname + "/views/startseite.html");
@@ -72,11 +80,20 @@ app.get("/registrierung", function (req, res) {
     res.render("registrierung");
 });
 
+app.get("/logout", function(req,res){
+  
+    req.session.destroy();
+    res.clearCookie();
+    res.render("startseite", {"message":"Ausgeloggt"})
+
+});
+
 //Post Requests
-app.post("/login", function (req, res) {});
+app.post("/login", function (req, res){});
 
 app.post("/registrierung", function (req, res) {});
 
+//Registrierungsfunktion
 app.post("/neuerBenutzer", function (req, res) {
     //Eingaben aus dem registrierung.ejs Formular
     const param_name = req.body.benutzername;
@@ -110,8 +127,9 @@ app.post("/startseite", function (req, res) {
         if(isValid == true){
             req.session.authenticated = true;
             req.session.user = benutzername;
-            res.redirect("startseite");
             console.log(req.session.user);
+            req.session.benutzername = benutzername;
+            res.redirect("startseite");
         }
         else {
             res.redirect("login")
@@ -122,6 +140,19 @@ app.post("/startseite", function (req, res) {
             res.redirect("login")
     }
 });
+
+
+ 
+//Funnktion istAngemeldet ?
+function angemeldet(req,res){
+    if(req.session.authenticated==true){
+        return true
+    }
+    else{
+        return false
+    }
+};
+
 
 
 app.get("/kalender", function (req, res) {
