@@ -1,4 +1,4 @@
-import { dateString, generateId } from "./helperKalMo.js";
+import { dateString, generateId, getDayIndex } from "./helperKalMo.js";
 
 
 export class Event{
@@ -11,6 +11,30 @@ export class Event{
         this.date = data.date;
         this.description = data.description;
         this.color = data.color;
+    }
+
+    get dayIndex(){
+        return getDayIndex(new Date(this.date));
+    }
+
+    get startHour(){
+        return parseInt(this.start.substring(0,2));
+
+    }
+
+    get endHour(){
+        return parseInt(this.end.substring(0,2));
+
+    }
+
+    get startMinutes(){
+        return parseInt(this.start.substring(3,5));
+
+    }
+
+    get endMinutes(){
+        return parseInt(this.end.substring(3,5));
+
     }
 
     isValidIn(kalender){
@@ -60,12 +84,21 @@ export class Event{
             return;
         }
         let eventSlot;
+        const h = kalender.slotHeight;
         if ($(`#${this.id}`).length){
             eventSlot = $(`#${this.id}`);
         }        else {
-            eventSlot = $("<div></div>").attr("id", this.id).addClass("event");
+            eventSlot = $("<div></div>")
+            .attr("id", this.id)
+            .addClass("event")
+            
         }
-        eventSlot.text(this.title);
+        eventSlot
+        .text(this.title)
+        .css("backgroundColor", `var(--color-${this.color})`)
+        .css("top", (this.startHour + this.startMinutes/60) * h + 2 + "px")
+        .css("bottom", 24 * h - (this.endHour + this.endMinutes/60) * h + 1 + "px")
+        .appendTo(`.day[data-dayIndex=${this.dayIndex}] .slots`);
     }
 
     saveIn(kalender){
@@ -79,6 +112,6 @@ export class Event{
             kalender.events[this.date] = {};
         }
         kalender.events[this.date][this.id] = this;
-        console.log(kalender.events);
+        kalender.saveEvents();
     }
 }

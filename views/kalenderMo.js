@@ -15,6 +15,7 @@ export class Kalender{
         this.weekOffSet = 0;
         this.mode = MODE.VIEW;
         this.events = {};
+        this.slotHeight = 30;
     }
     setup(){
         this.setupTimes();
@@ -22,6 +23,7 @@ export class Kalender{
         this.calculateCurrentWeek();
         this.showWeek();
         this.setupControls();
+        this.loadEvents();
     }
 
     setupTimes(){
@@ -190,6 +192,7 @@ export class Kalender{
         this.weekStart = addDays(this.weekStart, 7 * number);
         this.weekEnd = addDays(this.weekEnd, 7 * number);
         this.showWeek();
+        this.loadEvents();
     }
 
     showCurrentDay(){
@@ -200,5 +203,14 @@ export class Kalender{
 
     hideCurrentDay(){
         $(".day").removeClass("currentDay");
+    }
+
+    saveEvents(){
+        ("events", JSON.stringify(this.events));
+    }
+
+    loadEvents(){
+        //in setup + changeWeek
+        
     }
 }
