@@ -1,7 +1,7 @@
 /*Allgemein*/
 :root {
-    --grid-color: #cecece;
-    --time-color: #777;
+    --grid-color: rgb(38, 38, 38);
+    --time-color: rgb(38, 38, 38);
     --slot-hover-color: #eee;
     --shadow-color: rgba(0, 0, 0, 0.3);
     --font-color: #222;
@@ -39,7 +39,7 @@ textarea {
 }
 
 .header h1 {
-    color: var(--color-blue);
+    color: rgb(38, 38, 38);
     font-weight: 400;
     padding-bottom: 20px;
 }
@@ -66,6 +66,7 @@ textarea {
 .generalControls {
     position: absolute;
     right: 20px;
+    display: inline-block;
 }
 
 .generalControls {
@@ -135,6 +136,7 @@ textarea {
 /*slots*/
 .slots {
     position: relative;
+    background-color: white;
 }
 
 .slot, .time{
