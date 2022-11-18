@@ -26,17 +26,10 @@ richtig erkannt -->
             </ul>
         </nav>
 
-        <% function angemeldet(req,res) {%>
-        <% if(req.session.authenticated==true){ %>
-        <% return true %> 
-        <% } else{return false} }%>
-        
-        <% if(angemeldet==false){ %>
-            <a class="cta" href="login"><button>login</button></a>    
-        <%}else { %>
-            <a class="cta" href="logout"><button>logout</button></a>  
+            <a class="cta" href="login"  id="loginButton"><button>login</button></a>    
+            <a class="cta" href="logout"  id="logoutButton"><button>logout</button></a>  
 
-        <% } %>
+        
     </header>
     <form class="form1">
         <h1>Hebt die teamarbeit auf ein neues level</h1>
