@@ -201,4 +201,8 @@ export class Kalender{
     hideCurrentDay(){
         $(".day").removeClass("currentDay");
     }
+
+    saveEvents(){
+        this.events
+    }
 }

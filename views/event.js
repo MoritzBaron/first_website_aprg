@@ -79,6 +79,6 @@ export class Event{
             kalender.events[this.date] = {};
         }
         kalender.events[this.date][this.id] = this;
-        console.log(kalender.events);
+        kalender.saveEvents();
     }
 }
