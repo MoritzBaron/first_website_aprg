@@ -1,3 +1,5 @@
+
+
 //Express initialisieren
 const express = require("express");
 const app = express();
@@ -74,6 +76,7 @@ app.get("/contactus", function (req, res) {
 
 app.get("/login", function (req, res) {
     res.render("login");
+    showButton();
 });
 
 app.get("/registrierung", function (req, res) {
@@ -85,6 +88,7 @@ app.get("/logout", function(req,res){
     req.session.destroy();
     res.clearCookie();
     res.render("startseite", {"message":"Ausgeloggt"})
+    showButton();
 
 });
 
@@ -141,18 +145,25 @@ app.post("/startseite", function (req, res) {
     }
 });
 
-
- 
 //Funnktion istAngemeldet ?
 function angemeldet(req,res){
     if(req.session.authenticated==true){
         return true
+        
     }
     else{
         return false
     }
 };
-
+ 
+function showButton(){
+    if(angemeldet==true){
+    $("#loginButton").hide();
+    }
+else{
+    $("#logoutButton").hide();
+}
+};
 
 
 app.get("/kalender", function (req, res) {
