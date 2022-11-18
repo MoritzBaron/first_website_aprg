@@ -1,4 +1,4 @@
-import { generateId } from "./helperKalMo.js";
+import { dateString, generateId, getDayIndex } from "./helperKalMo.js";
 
 
 export class Event{
@@ -7,21 +7,50 @@ export class Event{
         this.title = data.title;
         this.start = data.start;
         this.end = data.end;
+        this.prevDate =  data.date;
         this.date = data.date;
         this.description = data.description;
         this.color = data.color;
+    }
+
+    get dayIndex(){
+        return getDayIndex(new Date(this.date));
+    }
+
+    get startHour(){
+        return parseInt(this.start.substring(0,2));
+
+    }
+
+    get endHour(){
+        return parseInt(this.end.substring(0,2));
+
+    }
+
+    get startMinutes(){
+        return parseInt(this.start.substring(3,5));
+
+    }
+
+    get endMinutes(){
+        return parseInt(this.end.substring(3,5));
+
     }
 
     isValidIn(kalender){
         const newStart = $("#eventStart").val();
         const newEnd = $("#eventEnd").val();
         const newDate = $("#eventDate").val();
-        for(const event of kalender.events){
-            if(event.id != this.id && event.end > newStart && event.start < newEnd){
+        if(kalender.events[newDate]){
+            const event = Object.values(kalender.events[newDate]).find(event => {
+            event.id != this.id && event.end > newStart && event.start < newEnd
+        });
+            if(event){
                 $("#errors").text(`This collides with the event ${event.title} (${event.start} - ${event.end}).`);
                 return false;
             }
         }
+
         const duration = 
             (new Date(`${newDate}T${newEnd}`).getTime() - 
             new Date(`${newDate}T${newStart}`).getTime())/
@@ -38,23 +67,51 @@ export class Event{
     }
 
     updateIn(kalender){
-        this.title = $("eventTitle").val();
-        this.start = $("eventStart").val();
-        this.end = $("eventEnd").val();
-        this.date = $("eventDate").val();
-        this.description = $("eventDescription").val();
-        this.color = $("eventColor").val();
+        this.title = $("#eventTitle").val();
+        this.start = $("#eventStart").val();
+        this.end = $("#eventEnd").val();
+        this.prevDate = this.date;
+        this.date = $("#eventDate").val();
+        this.description = $("#eventDescription").val();
+        this.color = $(".color.active").attr("data-color");
         this.showIn(kalender);
         this.saveIn(kalender);
     }
 
-    showIn(){
-        //todo
-        console.log("show event", this);
+    showIn(kalender){
+        if (this.date < dateString(kalender.weekStart) || this.date > dateString(kalender.weekEnd)) {
+            $(`#${this.id}`).remove();
+            return;
+        }
+        let eventSlot;
+        const h = kalender.slotHeight;
+        if ($(`#${this.id}`).length){
+            eventSlot = $(`#${this.id}`);
+        }        else {
+            eventSlot = $("<div></div>")
+            .attr("id", this.id)
+            .addClass("event")
+            
+        }
+        eventSlot
+        .text(this.title)
+        .css("backgroundColor", `var(--color-${this.color})`)
+        .css("top", (this.startHour + this.startMinutes/60) * h + 2 + "px")
+        .css("bottom", 24 * h - (this.endHour + this.endMinutes/60) * h + 1 + "px")
+        .appendTo(`.day[data-dayIndex=${this.dayIndex}] .slots`);
     }
 
     saveIn(kalender){
-        //todo
-        kalender.events.push(this);
+        if(this.prevDate && this.date != this.prevDate){
+            delete kalender.events[this.prevDate][this.id];
+            if (Object.values(kalender.events[this.prevDate]).length == 0){
+                delete kalender.events[this.prevDate]
+            }
+        }
+        if (!kalender.events[this.date]){
+            kalender.events[this.date] = {};
+        }
+        kalender.events[this.date][this.id] = this;
+        kalender.saveEvents();
     }
 }
