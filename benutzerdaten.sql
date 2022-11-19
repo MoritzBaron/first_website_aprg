@@ -5,7 +5,8 @@
 CREATE TABLE benutzer(
     email TEXT NOT NULL,
     benutzername TEXT NOT NULL,
-    passwort TEXT NOT NULL
+    passwort TEXT NOT NULL,
+    kalender TEXT
 );
 
 /* Probe Datensätze*/
