@@ -76,7 +76,7 @@ app.get("/contactus", function (req, res) {
 
 app.get("/login", function (req, res) {
     res.render("login");
-    showButton();
+    
 });
 
 app.get("/registrierung", function (req, res) {
@@ -156,19 +156,18 @@ function angemeldet(req,res){
     }
 };
  
-function showButton(){
-    if(angemeldet==true){
-    $("#loginButton").hide();
-    }
-else{
-    $("#logoutButton").hide();
-}
-};
+
 
 
 app.get("/kalender", function (req, res) {
     res.sendFile(__dirname + "/views/kalenderMo.html");
 });
 
-//ajax
-$.post()
+
+
+// Kalender Speichern funktion
+app.post("/events",function(req,res){
+    const benutzername = req.body.benutzername;
+    const funktioniert = db.prepare(`UPDATE benutzer(kalender) WHERE benutzername= ${benutzername} VALUES(?) `).run( JSON.stringify(this.events));
+   console.log(funktioniert)
+});

@@ -1,6 +1,7 @@
 import { addDays, getDayIndex, dateString} from "./helperKalMo.js";
 import {Event} from "./event.js";
 
+
 const MODE = {
     VIEW: 1,
     UPDATE: 2,
@@ -206,8 +207,7 @@ export class Kalender{
     }
 
     saveEvents(){
-        console.log("events", JSON.stringify(this.events));
-        
+     $.post("events")   
     }
 
     loadEvents(){
