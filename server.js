@@ -163,6 +163,9 @@ app.get("/kalender", function (req, res) {
     res.sendFile(__dirname + "/views/kalenderMo.html");
 });
 
+//ajax
+$.post()
+
 // Kalender Speichern funktion
 app.post("/events",function(req,res){
     const benutzername = req.body.benutzername;
