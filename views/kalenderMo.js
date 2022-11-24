@@ -206,7 +206,8 @@ export class Kalender{
     }
 
     saveEvents(){
-        ("events", JSON.stringify(this.events));
+        console.log("events", JSON.stringify(this.events));
+        
     }
 
     loadEvents(){

@@ -169,3 +169,6 @@ else{
 app.get("/kalender", function (req, res) {
     res.sendFile(__dirname + "/views/kalenderMo.html");
 });
+
+//ajax
+$.post()
