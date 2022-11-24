@@ -165,9 +165,13 @@ app.get("/kalender", function (req, res) {
 
 
 
-// Kalender Speichern funktion
-app.post("/events",function(req,res){
+ //Kalender Speichern funktion
+
+/*app.post("/events",function(req,res){
     const benutzername = req.body.benutzername;
     const funktioniert = db.prepare(`UPDATE benutzer(kalender) WHERE benutzername= ${benutzername} VALUES(?) `).run( JSON.stringify(this.events));
    console.log(funktioniert)
-});
+});*/
+
+
+

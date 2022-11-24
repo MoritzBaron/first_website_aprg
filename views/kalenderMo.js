@@ -1,12 +1,6 @@
 import { addDays, getDayIndex, dateString} from "./helperKalMo.js";
-import {Event} from "./event.js";
+import {Event, MODE} from "./event.js";
 
-
-const MODE = {
-    VIEW: 1,
-    UPDATE: 2,
-    CREATE: 3
-};
 
 //Kalender 
 export class Kalender{
@@ -17,6 +11,7 @@ export class Kalender{
         this.mode = MODE.VIEW;
         this.events = {};
         this.slotHeight = 30;
+        this.eventsLoaded = false;
     }
     setup(){
         this.setupTimes();
@@ -96,11 +91,10 @@ export class Kalender{
         if(this.mode == MODE.UPDATE){
             $("#submitButton").val("update");
             $("#deleteButton").show().off("click").click(() => {
-                //ToDo
-                console.log("delete event", event)
+                event.deleteIn(this);
             });
             $("#copyButton").show().off("click").click(() => {
-                //ToDo
+                event.copyIn(this);
                 console.log("copy Event", event)
             });
     
@@ -130,6 +124,7 @@ export class Kalender{
         if (event.isValidIn(this)){
             event.updateIn(this);
             this.closeModal();
+            this.saveEvents();
         }
     }
 
@@ -207,11 +202,34 @@ export class Kalender{
     }
 
     saveEvents(){
-     $.post("events")   
+        localStorage.setItem("events",JSON.stringify(this.events));   
     }
 
     loadEvents(){
-        //in setup + changeWeek
-        
+        $(".event").remove();
+        if (!this.eventsLoaded){
+            this.events = JSON.parse(localStorage.getItem("events"));
+            if (this.events){
+                for(const date of Object.keys(this.events)) {
+                    for (const id of Object.keys(this.events[date])){
+                        const event = new Event(this.events[date][id]);
+                        this.events[date][id] = event;
+                    }
+                }
+            }
+            this.eventsLoaded = true;
+        }
+        if (this.events){
+            for (let dayIndex = 0; dayIndex < 7; dayIndex++){
+                const date = dateString(addDays(this.weekStart, dayIndex));
+                if (this.events[date]){
+                    for (const event of Object.values(this.events[date])){
+                        event.showIn(this);
+                    }
+                }
+            }
+        }else {
+            this.events = {};
+        }
     }
 }
