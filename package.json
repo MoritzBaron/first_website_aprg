@@ -21,6 +21,7 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "better-sqlite3": "^7.6.2",
+    "body-parser": "^1.20.1",
     "cookie-parser": "^1.4.6",
     "cookies": "^0.8.0",
     "ejs": "^3.1.8",

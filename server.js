@@ -5,6 +5,10 @@ const express = require("express");
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 
+/*Bodyparser
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());*/
+
 //Express-Session initialisieren
 const session = require('express-session')
 app.use(session({
@@ -97,6 +101,8 @@ app.post("/login", function (req, res){});
 
 app.post("/registrierung", function (req, res) {});
 
+
+
 //Registrierungsfunktion
 app.post("/neuerBenutzer", function (req, res) {
     //Eingaben aus dem registrierung.ejs Formular
@@ -163,7 +169,13 @@ app.get("/kalender", function (req, res) {
     res.sendFile(__dirname + "/views/kalenderMo.html");
 });
 
-
+app.post("/neuerEintrag",function(req,res){
+    const benutzername = req.session.user;
+    console.log(benutzername);
+    const funktioniert= db.prepare("INSERT INTO benutzer(kalender) WHERE benutzername = ? VALUES(?)").run(benutzername,req.body)
+    console.log(funktioniert);
+    console.log(req.body);
+});
 
  //Kalender Speichern funktion
 

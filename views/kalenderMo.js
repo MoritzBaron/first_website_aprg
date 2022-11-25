@@ -33,6 +33,8 @@ export class Kalender{
                 .appendTo(slots);
         }
         $(".time").append(header).append(slots);
+
+        
     }
 
     setupDays(){
@@ -202,10 +204,18 @@ export class Kalender{
     }
 
     saveEvents(){
-        localStorage.setItem("events",JSON.stringify(this.events));   
+        $.post({
+            traditional: true,
+            url: "/neuerEintrag",
+            contenTyoe:"application/json",
+            data: JSON.stringify(this.events),
+            dataType:"json",
+            sucess: function(response){console.log(response);}
+        })
+        //localStorage.setItem("events",JSON.stringify(this.events));   
     }
 
-    loadEvents(){
+   /* loadEvents(){
         $(".event").remove();
         if (!this.eventsLoaded){
             this.events = JSON.parse(localStorage.getItem("events"));
@@ -231,5 +241,5 @@ export class Kalender{
         }else {
             this.events = {};
         }
-    }
+    }*/
 }
