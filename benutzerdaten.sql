@@ -3,6 +3,7 @@
 /*Tabelle mit benutzer und passwort*/
 
 CREATE TABLE benutzer(
+    
     email TEXT NOT NULL,
     benutzername TEXT NOT NULL,
     passwort TEXT NOT NULL,

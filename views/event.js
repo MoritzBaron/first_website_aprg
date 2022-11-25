@@ -1,5 +1,10 @@
 import { dateString, generateId, getDayIndex } from "./helperKalMo.js";
 
+export const MODE = {
+        VIEW: 1,
+        UPDATE: 2,
+        CREATE: 3
+};
 
 export class Event{
     constructor(data){
@@ -42,9 +47,9 @@ export class Event{
         const newEnd = $("#eventEnd").val();
         const newDate = $("#eventDate").val();
         if(kalender.events[newDate]){
-            const event = Object.values(kalender.events[newDate]).find(event => {
+            const event = Object.values(kalender.events[newDate]).find(event => 
             event.id != this.id && event.end > newStart && event.start < newEnd
-        });
+        );
             if(event){
                 $("#errors").text(`This collides with the event ${event.title} (${event.start} - ${event.end}).`);
                 return false;
@@ -91,6 +96,7 @@ export class Event{
             eventSlot = $("<div></div>")
             .attr("id", this.id)
             .addClass("event")
+            .click(()=> this.clickIn(kalender));
             
         }
         eventSlot
@@ -112,6 +118,38 @@ export class Event{
             kalender.events[this.date] = {};
         }
         kalender.events[this.date][this.id] = this;
+        kalender.saveEvents(kalender.events);              
+    }
+
+    clickIn(kalender){
+        if (kalender.mode == MODE.VIEW) {
+            kalender.mode = MODE.UPDATE;
+            kalender.openModal(this);
+        }
+    }
+
+    deleteIn(kalender){
+        kalender.closeModal();
+        $(`#${this.id}`).remove();
+        delete kalender.events[this.date][this.id];
+        if (Object.values(kalender.events[this.date]).length == 0){
+            delete kalender.events[this.date];
+        }
         kalender.saveEvents();
+    }
+
+    copyIn(kalender){
+        if(kalender.mode != MODE.UPDATE) return;
+        kalender.closeModal();
+        kalender.mode = MODE.CREATE;
+        const copy = new Event({
+            title: "Copy of " + this.title,
+            start: this.start,
+            end: this.end,
+            date: this.date,
+            description: this.description,
+            color: this.color
+        });
+        kalender.openModal(copy);
     }
 }

@@ -36,6 +36,7 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgb(153, 153, 153);
 }
 
 .header h1 {
@@ -118,10 +119,12 @@ textarea {
     padding: 10px 0px;
     height: 60px;
     overflow: hidden;
+    background-color: rgb(255, 255, 255);
 }
 
 .day .columnHeader {
     border-top: 1px solid var(--grid-color);
+    /* background-color: rgb(169, 169, 169); */
 }
 
 .day{
@@ -131,6 +134,8 @@ textarea {
 
 .day.currentDay .columnHeader{
     background-color: var(--slot-hover-color);
+    background-color: rgb(188, 188, 188);
+
 }
 
 /*slots*/
