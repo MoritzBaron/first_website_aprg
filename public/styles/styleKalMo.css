@@ -11,6 +11,10 @@
     --color-orange: rgb(233, 153, 4);
     --slotHeight: 30px;
 }
+body{
+    height: auto;
+
+}
 * {
     box-sizing: border-box;
     margin: 0;

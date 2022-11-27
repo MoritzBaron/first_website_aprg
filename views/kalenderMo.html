@@ -11,19 +11,25 @@
             src="https://kit.fontawesome.com/3765ae5d6c.js"
             crossorigin="anonymous"
         ></script>
-        
     </head>
     <body>
         <main>
             <header>
-                <img class="logo" href="/startseite" src="/logo_aprg.png" alt="logo" />
+                <img
+                    class="logo"
+                    href="/startseite"
+                    src="/logo_aprg.png"
+                    alt="logo"
+                />
                 <nav>
                     <ul class="nav__links">
-                        <li><a href="/features">Features</a></li>
-                        <li><a href="/kalender">seitenabh. var.</a></li>
+                        <li><a href="/startseite">Features</a></li>
+                        <li>
+                            <a >Dein persönlicher Kalender</a>
+                        </li>
                         <li><a href="/contactus">Contact Us</a></li>
                     </ul>
-                 </nav>
+                </nav>
                 <a class="cta" href="login"><button>login</button></a>
             </header>
             <section class="header">
@@ -38,8 +44,6 @@
                 </div>
 
                 <h1>Deine Termine</h1>
-
-                
             </section>
             <section id="kalender">
                 <div class="switchable"></div>
@@ -59,39 +63,104 @@
                 <h2 id="modalTitle"></h2>
                 <label for="title" class="descriptor">Title</label>
                 <div>
-                    <input type="text" required id="eventTitle" name="title" class="shortInput">
+                    <input
+                        type="text"
+                        required
+                        id="eventTitle"
+                        name="title"
+                        class="shortInput"
+                    />
                 </div>
                 <label for="date" class="descriptor">Date</label>
                 <div>
-                    <input type="date" required id="eventDate" name="date" class="shortInput">
+                    <input
+                        type="date"
+                        required
+                        id="eventDate"
+                        name="date"
+                        class="shortInput"
+                    />
                 </div>
                 <label for="time" class="descriptor">Time</label>
                 <div>
-                    <input type="time" required id="eventStart" name="time" class="shortInput">
+                    <input
+                        type="time"
+                        required
+                        id="eventStart"
+                        name="time"
+                        class="shortInput"
+                    />
                     -
-                    <input type="time" required id="eventEnd" name="time" class="shortInput">
+                    <input
+                        type="time"
+                        required
+                        id="eventEnd"
+                        name="time"
+                        class="shortInput"
+                    />
                 </div>
                 <label for="description" class="descriptor">Description</label>
                 <div>
-                    <textarea name="description" id="eventDescription"></textarea>
+                    <textarea
+                        name="description"
+                        id="eventDescription"
+                    ></textarea>
                 </div>
                 <label for="colors" class="descriptor">Color</label>
                 <div id="colors">
-                    <input type="button" name="color" class="color color-red" data-color="red">
-                    <input type="button" name="color" class="color color-blue" data-color="blue">
-                    <input type="button" name="color" class="color color-green" data-color="green">
-                    <input type="button" name="color" class="color color-orange" data-color="orange">
+                    <input
+                        type="button"
+                        name="color"
+                        class="color color-red"
+                        data-color="red"
+                    />
+                    <input
+                        type="button"
+                        name="color"
+                        class="color color-blue"
+                        data-color="blue"
+                    />
+                    <input
+                        type="button"
+                        name="color"
+                        class="color color-green"
+                        data-color="green"
+                    />
+                    <input
+                        type="button"
+                        name="color"
+                        class="color color-orange"
+                        data-color="orange"
+                    />
                 </div>
                 <div id="eventControls">
-                    <input type="submit" id="submitButton" value="Submit" class="button">
-                    <input type="button" id="cancelButton" value="Cancel" class="button">
-                    <input type="button" id="copyButton" value="Copy" class="button">
-                    <input type="button" id="deleteButton" value="Delete" class="button">
+                    <input
+                        type="submit"
+                        id="submitButton"
+                        value="Submit"
+                        class="button"
+                    />
+                    <input
+                        type="button"
+                        id="cancelButton"
+                        value="Cancel"
+                        class="button"
+                    />
+                    <input
+                        type="button"
+                        id="copyButton"
+                        value="Copy"
+                        class="button"
+                    />
+                    <input
+                        type="button"
+                        id="deleteButton"
+                        value="Delete"
+                        class="button"
+                    />
                 </div>
                 <div id="errors"></div>
             </form>
-
-
         </main>
 
         <script
