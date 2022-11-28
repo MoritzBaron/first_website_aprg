@@ -166,17 +166,22 @@ function angemeldet(req,res){
 
 
 app.get("/kalender", function (req, res) {
+    benutzername = req.session.user;
+    const row = db.prepare("SELECT kalender FROM benutzer WHERE benutzername=?").get(benutzername);
+    console.log(row);
     res.sendFile(__dirname + "/views/kalenderMo.html");
 });
 
 app.post("/neuerEintrag",function(req,res){
     const benutzername = req.session.user;
-    console.log(benutzername);
+    //console.log(benutzername);
     var neuerTermin = JSON.stringify(req.body);
-    console.log(neuerTermin)
-     db.prepare("UPDATE benutzer SET kalender=? WHERE benutzername =?").run(neuerTermin, benutzername);
-    
+    //console.log(neuerTermin)
+     const info = db.prepare("UPDATE benutzer SET kalender=? WHERE benutzername =?").run(neuerTermin, benutzername);
+    //console.log(info);
 });
+
+
 
  //Kalender Speichern funktion
 
