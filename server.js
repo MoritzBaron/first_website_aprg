@@ -172,9 +172,10 @@ app.get("/kalender", function (req, res) {
 app.post("/neuerEintrag",function(req,res){
     const benutzername = req.session.user;
     console.log(benutzername);
-    const funktioniert= db.prepare("INSERT INTO benutzer(kalender) WHERE benutzername = ? VALUES(?)").run(benutzername,req.body)
-    console.log(funktioniert);
-    console.log(req.body);
+    var neuerTermin = JSON.stringify(req.body);
+    console.log(neuerTermin)
+     db.prepare("UPDATE benutzer SET kalender=? WHERE benutzername =?").run(neuerTermin, benutzername);
+    
 });
 
  //Kalender Speichern funktion

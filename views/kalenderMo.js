@@ -215,10 +215,10 @@ export class Kalender{
         //localStorage.setItem("events",JSON.stringify(this.events));   
     }
 
-   /* loadEvents(){
+    loadEvents(){
         $(".event").remove();
         if (!this.eventsLoaded){
-            this.events = JSON.parse(localStorage.getItem("events"));
+            this.events = JSON.parse(("SELECT kalender FROM benutzer WHERE benutzername=?").run(req.session.user));
             if (this.events){
                 for(const date of Object.keys(this.events)) {
                     for (const id of Object.keys(this.events[date])){
@@ -241,5 +241,5 @@ export class Kalender{
         }else {
             this.events = {};
         }
-    }*/
+    }
 }
