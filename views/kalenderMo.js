@@ -216,9 +216,10 @@ export class Kalender{
     }
 
     loadEvents(){
+        console.log("hallo")
         $(".event").remove();
         if (!this.eventsLoaded){
-            this.events = JSON.parse(("SELECT kalender FROM benutzer WHERE benutzername=?").run(req.session.user));
+            this.events = JSON.parse(row);
             if (this.events){
                 for(const date of Object.keys(this.events)) {
                     for (const id of Object.keys(this.events[date])){
