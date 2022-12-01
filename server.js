@@ -171,7 +171,7 @@ app.get("/kalender", function (req, res) {
     console.log(dataKal);
     res.sendFile(__dirname + "/views/kalenderMo.html");
 });
-export var dataKal;
+
 
 app.post("/neuerEintrag",function(req,res){
     const benutzername = req.session.user;

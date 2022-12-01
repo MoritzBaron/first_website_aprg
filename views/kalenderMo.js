@@ -1,6 +1,6 @@
 import { addDays, getDayIndex, dateString} from "./helperKalMo.js";
 import {Event, MODE} from "./event.js";
-import { dataKal } from "../server.js";
+
 
 //Kalender 
 export class Kalender{
