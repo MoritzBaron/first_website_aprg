@@ -1,6 +1,6 @@
 import { addDays, getDayIndex, dateString} from "./helperKalMo.js";
 import {Event, MODE} from "./event.js";
-
+import { dataKal } from "../server.js";
 
 //Kalender 
 export class Kalender{
@@ -219,7 +219,7 @@ export class Kalender{
         console.log("hallo")
         $(".event").remove();
         if (!this.eventsLoaded){
-            this.events = JSON.parse(row);
+            this.events = JSON.parse(dataKal);
             if (this.events){
                 for(const date of Object.keys(this.events)) {
                     for (const id of Object.keys(this.events[date])){
