@@ -216,10 +216,13 @@ export class Kalender{
     }
 
     loadEvents(){
+        //test
         console.log("hallo")
+        
         $(".event").remove();
         if (!this.eventsLoaded){
-            this.events = JSON.parse(dataKal);
+            //hier wird info aus server benötigt
+            this.events = JSON.parse(info);
             if (this.events){
                 for(const date of Object.keys(this.events)) {
                     for (const id of Object.keys(this.events[date])){
