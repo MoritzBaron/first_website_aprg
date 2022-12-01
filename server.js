@@ -167,10 +167,11 @@ function angemeldet(req,res){
 
 app.get("/kalender", function (req, res) {
     benutzername = req.session.user;
-    const row = db.prepare("SELECT kalender FROM benutzer WHERE benutzername=?").get(benutzername);
-    console.log(row);
+    const dataKal = db.prepare("SELECT kalender FROM benutzer WHERE benutzername=?").get(benutzername);
+    console.log(dataKal);
     res.sendFile(__dirname + "/views/kalenderMo.html");
 });
+
 
 app.post("/neuerEintrag",function(req,res){
     const benutzername = req.session.user;
