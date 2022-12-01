@@ -1,3 +1,0 @@
-nodemon installieren und zum laufen bringen
-npm i --save-dev nodemon
-npm run devStart
