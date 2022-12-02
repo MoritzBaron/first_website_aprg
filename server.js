@@ -166,11 +166,14 @@ function angemeldet(req,res){
 
 
 app.get("/kalender", function (req, res) {
-    benutzername = req.session.user;
-    const dataKal = db.prepare("SELECT kalender FROM benutzer WHERE benutzername=?").get(benutzername);
-    console.log(dataKal);
     res.sendFile(__dirname + "/views/kalenderMo.html");
 });
+
+app.get("/loadEvents", function(req,res){
+    benutzername = req.session.user;
+    const dataKal = db.prepare("SELECT kalender FROM benutzer WHERE benutzername=?").get(benutzername);
+    res.send(dataKal.kalender)
+})
 
 
 app.post("/neuerEintrag",function(req,res){
@@ -181,6 +184,7 @@ app.post("/neuerEintrag",function(req,res){
      const info = db.prepare("UPDATE benutzer SET kalender=? WHERE benutzername =?").run(neuerTermin, benutzername);
     //console.log(info);
 });
+
 
 
 
