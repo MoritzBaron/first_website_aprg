@@ -37,6 +37,9 @@ header {
 }
 .nav__links {
     list-style: none;
+    display: grid;
+    justify-content: center;
+    align-items: ce;
 }
 .nav__links li {
     display: inline-block;
