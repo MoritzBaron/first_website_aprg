@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -11,9 +13,11 @@ body {
     height: 270vh;
     overflow: auto;
 }
+
 header {
     background-color: rgb(38, 38, 38);
 }
+
 li,
 a,
 button {
@@ -23,6 +27,7 @@ button {
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
+
 header {
     display: flex;
     justify-content: space-between;
@@ -34,19 +39,26 @@ header {
     width: 80px;
     cursor: pointer;
 }
+
 .nav__links {
     list-style: none;
 }
+
 .nav__links li {
     display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0% 20px;
 }
+
 .nav__links li a {
     transition: all 0.3s ease 0s;
 }
+
 .nav__links li a :hover {
     color: aqua;
 }
+
 button {
     padding: 9px 25px;
     background-color: #2691d9;
@@ -55,6 +67,12 @@ button {
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
+
 button:hover {
     background-color: #6cb9ec;
+}
+
+.invisible {
+    visibility: hidden;
+    
 }

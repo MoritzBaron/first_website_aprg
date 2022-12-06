@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Registrierung</title>
-        <link rel="stylesheet" href="/styles/main.css" />
-        <link rel="stylesheet" href="/styles/stylelogin.css" />
 
-    </head>
-    <header>
-        <img class="logo" src="/logo_aprg.png" alt="logo" />
-        <nav>
-            <ul class="nav__links">
-                <li><a href="/startseite">Startseite</a></li>
-                <li><a href="/kalender">Kalender</a></li>
-                <li><a href="/contactus">Contact Us</a></li>
-            </ul>
-        </nav>
-        
-    </header>
-    <body>
-        <div class="center">
-            <h1>Registrierung</h1>
+<head>
+    <title>Registrierung</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/stylelogin.css" />
+
+</head>
+<header>
+    <img class="logo" src="/logo_aprg.png" alt="logo" />
+    <nav>
+        <ul class="nav__links">
+            <li><a href="/startseite">Startseite</a></li>
+            <li><a href="/kalender">Kalender</a></li>
+            <li><a href="/contactus">Contact Us</a></li>
+        </ul>
+    </nav>
+    <a class="invisible" href="/login"><button>login</button></a>
+
+
+</header>
+
+<body>
+    <div class="center">
+        <h1>Registrierung</h1>
         <form action="/neuerBenutzer" method="post">
             <div class="txt_field">
                 <input type="text" name="benutzername" required />
@@ -37,13 +41,14 @@
                 <label>Password</label>
             </div>
             <div class="pass">Forgot Password?</div>
-                <input type="submit" value="Register" />
-                <div class="signup_link">
-                    Already a member? <a href="login">Login</a>
-                </div>
-            
+            <input type="submit" value="Register" />
+            <div class="signup_link">
+                Already a member? <a href="login">Login</a>
+            </div>
+
         </form>
-            <!-- <input type="password" name="passwort" /><br />
+        <!-- <input type="password" name="passwort" /><br />
             <button type="submit">Registrieren</button><br /> -->
-         </body>
+</body>
+
 </html>
