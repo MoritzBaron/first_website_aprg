@@ -61,20 +61,19 @@ app.listen(3000, function () {
 
 app.get("/startseite", function(req,res){
     if(angemeldet){
-    res.render("startseite",{"message": "Guten Tag"});   
+    res.render("startseiteLogin")
     }
     else{
-        res.render("startseite", {"message": "Guten Tag " + req.session.user});
+    res.render("startseite")
     }
     
 });
 
 
-app.get("/features", function (req, res) {
-    res.sendFile(__dirname + "/views/startseite.html");
-});
+
 
 app.get("/contactus", function (req, res) {
+    
     res.sendFile(__dirname + "/views/contactus.html");
 });
 
@@ -92,7 +91,7 @@ app.get("/logout", function(req,res){
     req.session.destroy();
     res.clearCookie();
     res.render("startseite", {"message":"Ausgeloggt"})
-    showButton();
+    
 
 });
 
