@@ -31,9 +31,11 @@
 }
 .front1{
     position: absolute;
-    size: 10%;
+    height: 55%;
+    width: 50%;
     top: 200px;
-    right: 100px;
+    right: 150px;
+    
 }
 .front2{
     position:absolute;
