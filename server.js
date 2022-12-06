@@ -61,20 +61,19 @@ app.listen(3000, function () {
 
 app.get("/startseite", function(req,res){
     if(angemeldet){
-    res.render("startseite",{"message": "Guten Tag"});   
+    res.render("startseiteLogin")
     }
     else{
-        res.render("startseite", {"message": "Guten Tag " + req.session.user});
+    res.render("startseite")
     }
     
 });
 
 
-app.get("/features", function (req, res) {
-    res.sendFile(__dirname + "/views/startseite.html");
-});
+
 
 app.get("/contactus", function (req, res) {
+    
     res.sendFile(__dirname + "/views/contactus.html");
 });
 
@@ -92,7 +91,7 @@ app.get("/logout", function(req,res){
     req.session.destroy();
     res.clearCookie();
     res.render("startseite", {"message":"Ausgeloggt"})
-    showButton();
+    
 
 });
 
@@ -169,13 +168,25 @@ app.get("/kalender", function (req, res) {
     res.sendFile(__dirname + "/views/kalenderMo.html");
 });
 
+app.get("/loadEvents", function(req,res){
+    benutzername = req.session.user;
+    const dataKal = db.prepare("SELECT kalender FROM benutzer WHERE benutzername=?").get(benutzername);
+    res.send(dataKal.kalender)
+    //console.log(dataKal.kalender)
+})
+
+
 app.post("/neuerEintrag",function(req,res){
     const benutzername = req.session.user;
-    console.log(benutzername);
-    const funktioniert= db.prepare("INSERT INTO benutzer(kalender) WHERE benutzername = ? VALUES(?)").run(benutzername,req.body)
-    console.log(funktioniert);
-    console.log(req.body);
+    //console.log(benutzername);
+    var neuerTermin = JSON.stringify(req.body);
+    //console.log(neuerTermin)
+     const info = db.prepare("UPDATE benutzer SET kalender=? WHERE benutzername =?").run(neuerTermin, benutzername);
+    //console.log(info);
 });
+
+
+
 
  //Kalender Speichern funktion
 
