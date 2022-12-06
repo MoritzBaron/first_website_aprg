@@ -173,6 +173,7 @@ app.get("/loadEvents", function(req,res){
     benutzername = req.session.user;
     const dataKal = db.prepare("SELECT kalender FROM benutzer WHERE benutzername=?").get(benutzername);
     res.send(dataKal.kalender)
+    //console.log(dataKal.kalender)
 })
 
 

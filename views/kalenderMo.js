@@ -204,29 +204,30 @@ export class Kalender {
     }
 
     saveEvents() {
-        $.post({
+        localStorage.setItem("events",JSON.stringify(this.events));   
+        /*$.post({
             traditional: true,
             url: "/neuerEintrag",
-            contenTyoe: "application/json",
+            contenType: "application/json",
             data: JSON.stringify(this.events),
             dataType: "json",
             sucess: function (response) { console.log(response); }
-        })
-        //localStorage.setItem("events",JSON.stringify(this.events));   
+        })*/   
     }
 
     loadEvents() {
-        //test
-        $.get("/loadEvents", function (dataKal) {
+        /*$.get("/loadEvents", function (DataKal) {
+            console.log(DataKal);*/
             $(".event").remove();
             if (!this.eventsLoaded) {
-                this.events = JSON.parse(dataKal);
-                console.log(dataKal)
+                this.events = JSON.parse(localStorage.getItem("events"));
+                
                 if (this.events) {
                     for (const date of Object.keys(this.events)) {
                         for (const id of Object.keys(this.events[date])) {
                             const event = new Event(this.events[date][id]);
                             this.events[date][id] = event;
+                            
                         }
                     }
                 }
@@ -244,6 +245,5 @@ export class Kalender {
             } else {
                 this.events = {};
             }
-        });
     }
 }
